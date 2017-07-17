@@ -7,7 +7,20 @@ import java.util.Scanner;
  *
  */
 public class GestaoDeRecursos {
-
+	
+	public static boolean verfication_user(String user, String[] users, String[] status, int n){
+		
+		for(int i = 0; i<n ; i++){
+			if(user.equals(users[i])){
+				if(status[i].equals("Em andamento")){
+					System.out.println("Este usuário já possui uma alocação em andamento.");
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	public static void main(String[] args) {
 
 		System.out.println("Sistema de alocação");
@@ -35,7 +48,7 @@ public class GestaoDeRecursos {
 		while(true) {
 			System.out.println("Escolha uma da opções:\n"
 					+ "1 - Alocações.\n"
-					+ "2 - Consultar recurso.\n"
+					+ "2 - Consultar alocação.\n"
 					+ "3 - Relatório acadêmico.\n"
 					+ "4 - Administrar alocações.\n"
 					+ "5 - Consultar usuário.\n"
@@ -56,22 +69,23 @@ public class GestaoDeRecursos {
 						+ "2 - Laboratório.\n"
 						+ "3 - Projetor.\n");
 				int type = readerInt.nextInt();
-
-				if(user_type == 1 && type !=3) {
-					System.out.println("O recurso não pode ser alocdo por um aluno.");
-					continue;
-				}
-				else if(user_type != 1 && (type == 1 || type == 2)) {
-					System.out.println("Qual a atividade?\n"
-							+ "1 - Aula.\n"
-							+ "2 - Laboratório.\n"
-							+ "3 - Apresentação.\n");
-					recursoAtividadeTipo[count] = readerInt.nextInt();
+				
+				System.out.println("Qual a atividade?\n"
+						+ "1 - Aula Tradicional.\n"
+						+ "2 - Laboratório.\n"
+						+ "3 - Apresentação.\n");
+				int type_act = readerInt.nextInt();
+				
+				if(user_type == 2 && (type == 1 || type == 2)) {
+					System.out.println("Nome do responsável:");
+					String resp = readerStr.nextLine();
+					if(verfication_user(resp, recursoResponsavel, recursoStatus, count))
+						continue;
+					recursoResponsavel[count] = resp;
+					recursoAtividadeTipo[count] = type_act;
 					tipoRecurso[count] = type;
 					users[count] = user_type;
 					recursoStatus[count] = "Em andamento";
-					System.out.println("Nome do responsável:");
-					recursoResponsavel[count] = readerStr.nextLine();
 					System.out.println("Digite o número da sala/lab que deseja alocar:");
 					recursoSala[count] = readerInt.nextInt();
 					System.out.println("Digite a hora de início:");
@@ -88,13 +102,15 @@ public class GestaoDeRecursos {
 					recursoData[count] = readerStr.nextLine();
 					++count;
 
-				}else if(type == 3) {
-
+				}else if(type_act == 3) {
+					System.out.println("Nome do responsável:");
+					String resp = readerStr.nextLine();
+					if(verfication_user(resp, recursoResponsavel, recursoStatus, count))
+						continue;
+					recursoResponsavel[count] = resp;
 					tipoRecurso[count] = type;
 					users[count] = user_type;
 					recursoStatus[count] = "Em andamento";
-					System.out.println("Nome do responsável:");
-					recursoResponsavel[count] = readerStr.nextLine();
 					System.out.println("Digite o número da projetor que deseja alocar:");
 					recursoSala[count] = readerInt.nextInt();
 					System.out.println("Digite a hora de início:");
@@ -110,6 +126,8 @@ public class GestaoDeRecursos {
 					System.out.println("Data:");
 					recursoData[count] = readerStr.nextLine();
 					++count;
+				}else{
+					System.out.println("Este usuário não pode alocar este recurso.");
 				}
 			}
 			else if(option == 2) {
@@ -171,9 +189,8 @@ public class GestaoDeRecursos {
 				String search = readerStr.nextLine();
 
 				boolean find = false;
-
-				int i = 0;
-				for(i=0 ; i<count ; i++) {
+				
+				for(int i=0 ; i<count ; i++) {
 					if(recursoResponsavel[i].equals(search)) {
 						find = true;
 						System.out.println("Título: "+recursoAtividadeTitulo[i]);
@@ -186,7 +203,7 @@ public class GestaoDeRecursos {
 					}
 				}
 
-				if(find)System.out.println("Usuário não encontrado.");
+				if(!find)System.out.println("Usuário não encontrado.");
 			}
 			else if(option == 6) {
 				System.out.println("Qual o recurso?\n"
@@ -201,7 +218,7 @@ public class GestaoDeRecursos {
 				for(i=0 ; i<count ; i++) {
 					if(tipoRecurso[i] == type) {
 						find = true;
-						System.out.println(recursoAtividadeTitulo[count]);
+						System.out.println(recursoAtividadeTitulo[i]);
 						System.out.println("Responsável: "+recursoResponsavel[i]);
 						System.out.println("Status: "+recursoStatus[i]);
 						System.out.println("Data: "+recursoData[i]);
@@ -212,11 +229,23 @@ public class GestaoDeRecursos {
 					}
 				}
 
-				if(find)System.out.println("Recurso nunca foi alocado!");
+				if(!find)System.out.println("Recurso nunca foi alocado!");
 
 			}
 			else if(option == 7)
 				break;		
+			else if(option == 1000){
+				for(int i=0 ; i<count ; i++){
+					System.out.println(recursoAtividadeTitulo[i]);
+					System.out.println("Responsável: "+recursoResponsavel[i]);
+					System.out.println("Status: "+recursoStatus[i]);
+					System.out.println("Data: "+recursoData[i]);
+					System.out.println("Decrição da atividade:"+recursoAtividadeDescricao[i]);
+					System.out.println("Hora de início:"+recursoHoraInicio[i]);
+					System.out.println("Hora de fim:"+recursoHoraTermino[i]);
+					System.out.println("\n-----------------------------------\n");
+				}
+			}
 		}
 
 		readerInt.close();
