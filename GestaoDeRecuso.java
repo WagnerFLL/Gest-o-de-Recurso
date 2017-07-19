@@ -1,11 +1,5 @@
-package projeto1_semOO;
-
 import java.util.Scanner;
 
-/**
- * @author Wagner
- *
- */
 public class GestaoDeRecursos {
 
 	public static boolean verificar_user(String user, String[] users, String[] status, int n){
@@ -194,7 +188,7 @@ public class GestaoDeRecursos {
 				System.out.println("Número de processos em andamento: "+andamento);
 				System.out.println("Número de processos concluídos: "+concluido);
 				System.out.println("Número de processos alocados: "+alocado);
-
+				System.out.println("Número de usuários: "+(n_alunos+n_pesquisadores+n_professores));
 				System.out.println("Aulas: "+aula);
 				System.out.println("Aulas em Laboratórios: "+lab);
 				System.out.println("Apresentaçõs: "+apresentacao);
