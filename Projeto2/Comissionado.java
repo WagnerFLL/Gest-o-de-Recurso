@@ -1,13 +1,11 @@
 package system;
 
-import java.util.Calendar;
 import java.util.Scanner;
 
 public class Comissionado extends Assalariado{
 	
 	Scanner scan = new Scanner(System.in);
 	private int comissaoPercentual;
-	private Calendar diaPagameto;
 	
 	public Comissionado(int ID) {
 		super(ID);
@@ -22,16 +20,5 @@ public class Comissionado extends Assalariado{
 	public void setComissaoPercentual(int comissaoPercentual) {
 		this.comissaoPercentual = comissaoPercentual;
 	}
-
-	@SuppressWarnings("static-access")
-	public int getDiaPagameto() {
-		return diaPagameto.get(diaPagameto.DAY_OF_MONTH);
-	}
-
-	public void setDiaPagameto(Calendar diaPagameto) {
-		this.diaPagameto = diaPagameto;
-	}
-	
-	
 	
 }

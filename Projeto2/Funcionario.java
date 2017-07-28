@@ -1,5 +1,6 @@
 package system;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Funcionario {
@@ -12,6 +13,8 @@ public class Funcionario {
 	private String nome;
 	private String formaPagamento;
 	private double taxaServicoSindical;
+	private Calendar pagamento;
+	private int intervaloPagamento; 
 	
 	public Funcionario(int ID) {
 		
@@ -44,7 +47,9 @@ public class Funcionario {
 		}
 	}
 	
-	
+	public void proximoPagamento() {
+		this.pagamento.add(pagamento.DAY_OF_MONTH, this.intervaloPagamento);
+	}
 	
 	public int getCpf() {
 		return cpf;
