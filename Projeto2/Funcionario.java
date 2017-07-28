@@ -44,6 +44,16 @@ public class Funcionario {
 		}
 	}
 	
+	
+	
+	public int getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(int cpf) {
+		this.cpf = cpf;
+	}
+
 	public int getID() {
 		return ID;
 	}
