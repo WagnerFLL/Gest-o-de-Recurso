@@ -20,6 +20,14 @@ public class Comissionado extends Assalariado{
 		this.comissoes += comissaoPercentual*venda;
 	}
 	
+	public double getComissoes() {
+		return comissoes;
+	}
+
+	public void setComissoes(double comissoes) {
+		this.comissoes = comissoes;
+	}
+
 	public double getComissaoPercentual() {
 		return comissaoPercentual;
 	}

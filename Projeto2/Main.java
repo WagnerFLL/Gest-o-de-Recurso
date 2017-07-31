@@ -7,7 +7,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		FolhaPagamento folha = new FolhaPagamento();
-
+		Sindicato sindicato = new Sindicato();
+		
 		Scanner scanInt = new Scanner(System.in);
 		Scanner scanStr = new Scanner(System.in);
 		
@@ -23,11 +24,11 @@ public class Main {
 					+ "|\t 4 - Alterar data de pagamento.\n"
 					+ "|\t 5 - Alterar dados.\n"
 					+ "|\t 6 - Lançar horas trabalhadas.\n"
-					+ "|\t 7 - Adicionar sindicato.\n"
+					+ "|\t 7 - Adicionar funcionário ao sindicato.\n"
 					+ "|\t 8 - Adicionar venda.\n"
 					+ "|\t 9 - Sair\n");
 			int option = scanInt.nextInt();
-
+			
 			switch (option) {
 			case 1:
 				folha.adicionarEmpregado();
@@ -48,7 +49,8 @@ public class Main {
 				folha.adicionarHoras();
 				break;
 			case 7:
-				Sindicato sindicato = new Sindicato();
+				sindicato.adicionarFuncionario();
+				break;
 			case 8:
 				folha.venda();
 			case 9:
