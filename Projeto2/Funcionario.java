@@ -13,12 +13,19 @@ public class Funcionario {
 	private String nome;
 	private String formaPagamento;
 	private double taxaServicoSindical;
-	private Calendar pagamento;
+	private double taxaServicos;
+	private Calendar pagamento = Calendar.getInstance();;
 	private int intervaloPagamento; 
 	
-	public Funcionario(int ID) {
+	public Funcionario(int ID, int intervaloPagamento) {
 		
 		this.ID = ID;
+		this.taxaServicoSindical = 0; 
+		this.taxaServicos = 0;
+		
+		this.intervaloPagamento = intervaloPagamento;
+		pagamento.add(pagamento.DAY_OF_MONTH, this.intervaloPagamento);
+		
 		System.out.println("Digite o nome do empregado: ");
 		this.nome = scanStr.nextLine();
 		System.out.println("Digite seu CPF: ");
@@ -27,7 +34,7 @@ public class Funcionario {
 		this.endereco = scanStr.nextLine();
 		System.out.println("Qual a forma de pagamento?\n"
 				+ "1 - Cheque.\n"
-				+ "2 - Depósito bancário."
+				+ "2 - Depósito bancário.\n"
 				+ "3 - Em mãos.\n");
 		int option = scanInt.nextInt();
 		switch(option) {
@@ -47,6 +54,7 @@ public class Funcionario {
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void proximoPagamento() {
 		this.pagamento.add(pagamento.DAY_OF_MONTH, this.intervaloPagamento);
 	}
@@ -93,6 +101,21 @@ public class Funcionario {
 
 	public void setTaxaServicoSindical(double taxaServicoSindical) {
 		this.taxaServicoSindical = taxaServicoSindical;
+	}
+	public double getTaxaServico() {
+		return taxaServicos;
+	}
+
+	public void setTaxaServico(double taxaServico) {
+		this.taxaServicos = taxaServico;
+	}
+	public Calendar getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(int data,int intervalo) {
+		this.pagamento.set(Calendar.YEAR, Calendar.MONTH, data);
+		this.intervaloPagamento = intervalo;
 	}
 
 	@Override

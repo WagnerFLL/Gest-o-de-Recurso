@@ -15,12 +15,17 @@ public class Main {
 		
 		while(flag) {
 
-			System.out.println("===========================\n"
+			System.out.println("===================================\n"
 					+ "|  Selecione uma das opções:\n"
 					+ "|\t 1 - Adicionar funcionário.\n"
 					+ "|\t 2 - Remover funcionário.\n"
 					+ "|\t 3 - Próximo dia.\n"
-					+ "|\t 4 - Sair\n");
+					+ "|\t 4 - Alterar data de pagamento.\n"
+					+ "|\t 5 - Alterar dados.\n"
+					+ "|\t 6 - Lançar horas trabalhadas.\n"
+					+ "|\t 7 - Adicionar sindicato."
+					+ "|\t 8 - Adicionar venda.\n"
+					+ "|\t 9 - Sair\n");
 			int option = scanInt.nextInt();
 
 			switch (option) {
@@ -34,6 +39,19 @@ public class Main {
 				folha.proximoDia();
 				break;
 			case 4:
+				folha.alterarAgenda();
+				break;
+			case 5:
+				folha.alterarEmpregado();
+				break;
+			case 6:
+				folha.adicionarHoras();
+				break;
+			case 7:
+				Sindicato sindicato = new Sindicato();
+			case 8:
+				folha.venda();
+			case 9:
 				flag = false;
 				break;
 			default:

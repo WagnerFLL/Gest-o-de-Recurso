@@ -5,15 +5,22 @@ import java.util.Scanner;
 public class Comissionado extends Assalariado{
 	
 	Scanner scan = new Scanner(System.in);
-	private int comissaoPercentual;
+	private double comissaoPercentual;
+	private double comissoes;
 	
 	public Comissionado(int ID) {
 		super(ID);
-		System.out.println("Digite a comissão percentual:(INTEIRO)");
-		this.comissaoPercentual = scan.nextInt();
+		this.comissoes = 0;
+		System.out.println("Digite a comissão percentual:(Float)");
+		this.comissaoPercentual = scan.nextDouble();
+		
 	}
-
-	public int getComissaoPercentual() {
+	
+	public void adicionarVenda(double venda) {
+		this.comissoes += comissaoPercentual*venda;
+	}
+	
+	public double getComissaoPercentual() {
 		return comissaoPercentual;
 	}
 

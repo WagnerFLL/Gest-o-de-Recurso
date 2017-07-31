@@ -8,8 +8,8 @@ public class Assalariado extends Funcionario {
 	private double salarioFixo;
 	
 	public Assalariado(int ID) {
-		super(ID);
-		System.out.println("Qual o percentual da comissão?");
+		super(ID,30);
+		System.out.println("Informe o salário do empregado:");
 		this.salarioFixo = scan.nextDouble();
 	}
 

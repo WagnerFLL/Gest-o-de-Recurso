@@ -10,7 +10,7 @@ public class FolhaPagamento {
 	Scanner scanInt = new Scanner(System.in);
 	Scanner scanStr = new Scanner(System.in);
 	private double IMPOSTO = 12.3; 
-	private Calendar caledario;
+	private Calendar calendario = Calendar.getInstance();
 	private int numeroEmpregados;
 	private List<Comissionado> funcionariosComissionados = new LinkedList<Comissionado>();
 	private List<Assalariado> funcionariosAssalariados = new LinkedList<Assalariado>();
@@ -18,13 +18,6 @@ public class FolhaPagamento {
 
 	public FolhaPagamento() {
 		this.numeroEmpregados = 0;
-		System.out.println("Digite a data atual.\nAno:");
-		int year = scanInt.nextInt();
-		System.out.println("Mês: ");
-		int month = scanInt.nextInt();
-		System.out.println("Dia: ");
-		int date = scanInt.nextInt();
-		this.caledario.set(year, month, date);
 	}
 
 	public void adicionarEmpregado() {
@@ -37,12 +30,15 @@ public class FolhaPagamento {
 		switch (option) {
 		case 1:
 			this.funcionariosAssalariados.add(new Assalariado(++numeroEmpregados));
+			System.out.println(funcionariosAssalariados.get(funcionariosAssalariados.size()-1).getNome()+" adicionado.");
 			break;
 		case 2:
 			this.funcionariosComissionados.add(new Comissionado(++numeroEmpregados));
+			System.out.println(funcionariosComissionados.get(funcionariosComissionados.size()-1).getNome()+" adicionado.");
 			break;
 		case 3:
 			this.funcionariosHoristas.add(new Horista(++numeroEmpregados));
+			System.out.println(funcionariosHoristas.get(funcionariosHoristas.size()-1).getNome()+" adicionado.");
 			break;
 		default:
 			System.out.println("Opção inválida.");
@@ -95,7 +91,8 @@ public class FolhaPagamento {
 
 	}
 	public void alterarEmpregado() {
-		System.out.println("Digite o ID do funcionário: ");
+
+		System.out.println("Informe o ID do funcionário: ");
 
 		int index = 0;
 		boolean flag = false;
@@ -192,15 +189,146 @@ public class FolhaPagamento {
 	}
 	public void taxaServico() {
 
+		System.out.println("Informe o ID do funcionário: ");
+		int id = scanInt.nextInt();
+		boolean flag = false;
+
+		for(Assalariado func : funcionariosAssalariados){
+			if(id == func.getID()){
+				flag = true;
+				System.out.println("Informe a nova taxa: ");
+				func.setTaxaServicoSindical(scanInt.nextDouble());
+				break;
+			}
+		}
+
+		if(!flag) {
+			for(Comissionado func : funcionariosComissionados){
+				if(id == func.getID()){
+					flag = true;
+					System.out.println("Informe a nova taxa: ");
+					func.setTaxaServicoSindical(scanInt.nextDouble());
+					break;
+				}
+			}
+		}
+		if(!flag) {
+			for(Horista func : funcionariosHoristas){
+				if(id == func.getID()){
+					flag = true;
+					System.out.println("Informe a nova taxa: ");
+					func.setTaxaServicoSindical(scanInt.nextDouble());
+					break;
+				}
+			}
+		}
+		if(!flag)System.out.println("ID incorreto!");
+
 	}
 	public void pagamentos() {
-		
+		for(Assalariado func : funcionariosAssalariados){
+			System.out.println("Funcionário "+func.getNome()+": "+ func.getPagamento().get(Calendar.DAY_OF_MONTH));
+			if(calendario.get(Calendar.DAY_OF_MONTH) == func.getPagamento().get(Calendar.DAY_OF_MONTH)){
+				System.out.println("Pagamento de "+(func.getSalarioFixo()-IMPOSTO - func.getTaxaServico())+" à "+func.getNome());
+				func.proximoPagamento();
+			}
+		}
+
+		for(Comissionado func : funcionariosComissionados){
+			System.out.println("Funcionário "+func.getNome()+": "+ func.getPagamento().get(Calendar.DAY_OF_MONTH));
+			if(calendario.get(Calendar.DAY_OF_MONTH) == func.getPagamento().get(Calendar.DAY_OF_MONTH)){
+				System.out.println("Pagamento de "+(func.getSalarioFixo()-IMPOSTO - func.getTaxaServico())+" à "+func.getNome());
+				func.proximoPagamento();
+			}
+		}
+
+		for(Horista func : funcionariosHoristas){
+			System.out.println("Funcionário "+func.getNome()+": "+ func.getPagamento().get(Calendar.DAY_OF_MONTH));
+			if(calendario.get(Calendar.DAY_OF_MONTH) == func.getPagamento().get(Calendar.DAY_OF_MONTH)){
+				System.out.println("Pagamento de "+(func.pagar()-IMPOSTO)+" à "+func.getNome());
+				func.proximoPagamento();
+			}
+		}
 	}
 	public void alterarAgenda() {
 
+		System.out.println("Informe o ID do funcionário: ");
+		int id = scanInt.nextInt();
+		boolean flag = false;
+
+		for(Assalariado func : funcionariosAssalariados){
+			if(id == func.getID()){
+				flag = true;
+				System.out.println("Informe a nova data para pagamento: ");
+				int dia = scanInt.nextInt();
+				System.out.println("Informe o intervalo entre os pagamentos: ");
+				func.setPagamento(dia,scanInt.nextInt());
+				break;
+			}
+		}
+
+		if(!flag) {
+			for(Comissionado func : funcionariosComissionados){
+				if(id == func.getID()){
+					flag = true;
+					System.out.println("Informe a nova data para pagamento: ");
+					int dia = scanInt.nextInt();
+					System.out.println("Informe o intervalo entre os pagamentos: ");
+					func.setPagamento(dia,scanInt.nextInt());
+					break;
+				}
+			}
+		}
+		if(!flag) {
+			for(Horista func : funcionariosHoristas){
+				if(id == func.getID()){
+					flag = true;
+					System.out.println("Informe a nova data para pagamento: ");
+					int dia = scanInt.nextInt();
+					System.out.println("Informe o intervalo entre os pagamentos: ");
+					func.setPagamento(dia,scanInt.nextInt());
+					break;
+				}
+			}
+		}
+		if(!flag)System.out.println("ID incorreto!");
 	}
 	public void proximoDia() {
-		this.caledario.add(Calendar.DAY_OF_WEEK_IN_MONTH, 1);
+		System.out.println("Data atual: "+calendario.get(Calendar.DAY_OF_MONTH)+"/"+(calendario.get(Calendar.MONTH)+1)+"");
+		this.pagamentos();
+		this.calendario.add(Calendar.DAY_OF_MONTH, 1);
 	}
+	public void adicionarHoras() {
+		System.out.println("Informe o id do funcionário: ");
+		int id = scanInt.nextInt();
+		boolean flag = false;
 
+		if(!flag) {
+			for(Horista func : funcionariosHoristas){
+				if(id == func.getID()){
+					flag = true;
+					System.out.println("Informe a quantidade de horas: ");
+					func.addHoras(scanInt.nextInt());
+					break;
+				}
+			}
+		}
+		if(!flag)System.out.println("ID incorreto ou o funcionário não é horista!");
+	}
+	public void venda() {
+		System.out.println("Informe o ID do vendedor: ");
+		
+		int id = scanInt.nextInt();
+		boolean flag = false;
+		
+		for(Comissionado func : funcionariosComissionados){
+			if(id == func.getID()){
+				flag = true;
+				System.out.println("Informe o valor da venda: ");
+				func.adicionarVenda(scanInt.nextDouble());
+				break;
+			}
+		}
+		if(!flag)System.out.println("O funcionário não existe ou não é comissionado!");
+	}
 }
