@@ -23,7 +23,7 @@ public class Main {
 					+ "|\t 4 - Alterar data de pagamento.\n"
 					+ "|\t 5 - Alterar dados.\n"
 					+ "|\t 6 - Lançar horas trabalhadas.\n"
-					+ "|\t 7 - Adicionar sindicato."
+					+ "|\t 7 - Adicionar sindicato.\n"
 					+ "|\t 8 - Adicionar venda.\n"
 					+ "|\t 9 - Sair\n");
 			int option = scanInt.nextInt();

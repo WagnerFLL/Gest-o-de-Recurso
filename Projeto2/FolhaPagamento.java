@@ -19,7 +19,6 @@ public class FolhaPagamento {
 	public FolhaPagamento() {
 		this.numeroEmpregados = 0;
 	}
-
 	public void adicionarEmpregado() {
 		System.out.println("Qual o tipo de empregado?\n"
 				+ "1 - Assalariado.\n"
@@ -30,15 +29,15 @@ public class FolhaPagamento {
 		switch (option) {
 		case 1:
 			this.funcionariosAssalariados.add(new Assalariado(++numeroEmpregados));
-			System.out.println(funcionariosAssalariados.get(funcionariosAssalariados.size()-1).getNome()+" adicionado.");
+			System.out.println(funcionariosAssalariados.get(funcionariosAssalariados.size()-1).getNome()+" adicionado. ID = "+(numeroEmpregados));
 			break;
 		case 2:
 			this.funcionariosComissionados.add(new Comissionado(++numeroEmpregados));
-			System.out.println(funcionariosComissionados.get(funcionariosComissionados.size()-1).getNome()+" adicionado.");
+			System.out.println(funcionariosComissionados.get(funcionariosComissionados.size()-1).getNome()+" adicionado. ID = "+(numeroEmpregados));
 			break;
 		case 3:
 			this.funcionariosHoristas.add(new Horista(++numeroEmpregados));
-			System.out.println(funcionariosHoristas.get(funcionariosHoristas.size()-1).getNome()+" adicionado.");
+			System.out.println(funcionariosHoristas.get(funcionariosHoristas.size()-1).getNome()+" adicionado. ID = "+(numeroEmpregados));
 			break;
 		default:
 			System.out.println("Opção inválida.");
@@ -46,7 +45,6 @@ public class FolhaPagamento {
 		}
 
 	}
-
 	public void removerEmpregado() {
 		System.out.println("Informe o ID do funcionário:");
 
@@ -136,9 +134,7 @@ public class FolhaPagamento {
 		System.out.println("O que deseja alterar?\n"
 				+ "1 - Nome.\n"
 				+ "2 - CPF.\n"
-				+ "3 - Endreço.\n"
-				+ "4 - "
-				+ "");
+				+ "3 - Endreço.\n");
 		int option = scanInt.nextInt();
 
 		switch(type) {
