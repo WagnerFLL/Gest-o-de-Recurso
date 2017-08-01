@@ -1,4 +1,4 @@
-package system;
+package projeto2.folha.pagamento;
 
 import java.util.Scanner;
 
@@ -6,65 +6,68 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		FolhaPagamento folha = new FolhaPagamento();
-		Sindicato sindicato = new Sindicato();
-		
+		Payroll payroll = new Payroll();
+		Syndicate syndicate = new Syndicate();
+
 		Scanner scanInt = new Scanner(System.in);
-		Scanner scanStr = new Scanner(System.in);
-		
+		Scanner scan2 = new Scanner(System.in);
+
 		boolean flag = true;
-		
+
 		while(flag) {
 
 			System.out.println("===================================\n"
 					+ "|  Selecione uma das opções:\n"
 					+ "|\t 1 - Adicionar funcionário.\n"
 					+ "|\t 2 - Remover funcionário.\n"
-					+ "|\t 3 - Próximo dia.\n"
-					+ "|\t 4 - Alterar data de pagamento.\n"
-					+ "|\t 5 - Alterar dados.\n"
-					+ "|\t 6 - Lançar horas trabalhadas.\n"
-					+ "|\t 7 - Adicionar funcionário ao sindicato.\n"
-					+ "|\t 8 - Adicionar venda.\n"
-					+ "|\t 9 - Sair\n");
+					+ "|\t 3 - Alterar data de pagamento.\n"
+					+ "|\t 4 - Alterar dados.\n"
+					+ "|\t 5 - Adicionar funcionário ao sindicato.\n"
+					+ "|\t 6 - Adicionar venda.\n"
+					+ "|\t 7 - Adicionar horas trabalhadas.\n"
+					+ "|\t 8 - Ver próximos pagamentos.\n"
+					+ "|\t 9 - Próximo dia.\n"
+					+ "|\t 10 - Sair.\n");
+
 			int option = scanInt.nextInt();
-			
-			switch (option) {
+
+			switch(option){
 			case 1:
-				folha.adicionarEmpregado();
+				payroll.addEmployee();
 				break;
 			case 2:
-				folha.removerEmpregado();
+				payroll.removeEmployee();
 				break;
 			case 3:
-				folha.proximoDia();
+				payroll.changePaymentsSchedule();
 				break;
 			case 4:
-				folha.alterarAgenda();
+				payroll.modifyEmployee();
 				break;
 			case 5:
-				folha.alterarEmpregado();
+				syndicate.addFunctionary();
 				break;
 			case 6:
-				folha.adicionarHoras();
+				payroll.sale();
 				break;
 			case 7:
-				sindicato.adicionarFuncionario();
+				payroll.addHours();
 				break;
 			case 8:
-				folha.venda();
+				payroll.checkPayments();
 			case 9:
+				payroll.nextDay();
+				break;
+			case 10:
 				flag = false;
 				break;
 			default:
 				System.out.println("Opção inválida.\n");
 			}
-
-
 		}
-		
+
 		scanInt.close();
-		scanStr.close();
+		scan2.close();
 	}
 
 }
