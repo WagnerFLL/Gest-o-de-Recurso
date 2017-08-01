@@ -46,7 +46,7 @@ public class Payroll {
 
 	}
 	public void removeEmployee() {
-		System.out.println("Informe o ID do funcionário:");
+		System.out.println("Informe o ID do funcionário: ");
 
 		boolean flag = false;
 		int id = scanInt.nextInt();
@@ -266,7 +266,7 @@ public class Payroll {
 			for(Hourly func : hourlyList){
 				if(id == func.getID()){
 					flag = true;
-					System.out.println("Informe a quantidade de horas: ");
+					System.out.println("Informe a quantidade de horas: (int)");
 					func.addHours(scanInt.nextInt());
 					break;
 				}

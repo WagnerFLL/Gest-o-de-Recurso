@@ -11,7 +11,7 @@ public class Hourly extends Functionary{
 	
 	public Hourly(int ID) {
 		super(ID,7);
-		System.out.println("Informe o valor do salário/hora:");
+		System.out.println("Informe o valor do salário/hora: (Float)");
 		this.hourlyWage = scan.nextDouble();
 		this.extraHours = 0;
 		this.workingHours = 0;

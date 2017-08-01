@@ -24,7 +24,7 @@ public class Functionary {
 		
 		System.out.println("Digite o nome do empregado: ");
 		this.name = scanStr.nextLine();
-		System.out.println("Digite seu CPF: ");
+		System.out.println("Digite seu CPF: (Int)");
 		this.cpf = scanInnt.nextInt();
 		System.out.println("Digite seu endereço: ");
 		this.adress = scanStr.nextLine();

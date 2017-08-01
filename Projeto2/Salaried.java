@@ -9,7 +9,7 @@ public class Salaried extends Functionary {
 	
 	public Salaried(int ID) {
 		super(ID,30);
-		System.out.println("Informe o salário do empregado:");
+		System.out.println("Informe o salário do empregado: (Float)");
 		this.fixedSalary = scan.nextDouble();
 	}
 
