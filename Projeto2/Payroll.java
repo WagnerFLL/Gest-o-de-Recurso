@@ -209,31 +209,66 @@ public class Payroll {
 			}
 		}
 	}
+	
+	private void print(){
+		System.out.println("Escolha:\n"
+				+ "1 - 1º dia do mês.\n"
+				+ "2 - Último dia do mês.\n"
+				+ "3 - 1º dia da semana.\n"
+				+ "4 - No meio do mês.");
+	}
+	
 	public void changePaymentsSchedule() {
 
 		System.out.println("Informe o ID do funcionário: ");
 		int id = scanInt.nextInt();
 		boolean flag = false;
-
+		boolean choice = false;
+		
+		System.out.println("Deseja alterar para opções pré-definidas? (y/n)");
+		if("y".equals(scanStr.nextLine())) choice = true;
+		
+		
 		for(Salaried func : salariedList){
 			if(id == func.getID()){
 				flag = true;
-				System.out.println("Informe a nova data para pagamento: ");
-				int dia = scanInt.nextInt();
-				System.out.println("Informe o intervalo entre os pagamentos: ");
-				func.setDatePayment(dia,scanInt.nextInt());
+				
+				if(choice){
+					print();
+					id = scanInt.nextInt();
+					if(id == 1)func.setDatePayment(1,30);
+					else if(id == 2)func.setDatePayment(30,30);
+					else if(id == 3)func.setDatePayment(1,7);
+					else if(id == 4)func.setDatePayment(15,30);
+				}else{
+					System.out.println("Informe a nova data para pagamento: (Dia)");
+					int dia = scanInt.nextInt();
+					System.out.println("Informe o intervalo entre os pagamentos: ");
+					func.setDatePayment(dia,scanInt.nextInt());
+				}
 				break;
 			}
 		}
 
 		if(!flag) {
+			
 			for(Commissioned func : commissionedList){
 				if(id == func.getID()){
 					flag = true;
-					System.out.println("Informe a nova data para pagamento: ");
-					int dia = scanInt.nextInt();
-					System.out.println("Informe o intervalo entre os pagamentos: ");
-					func.setDatePayment(dia,scanInt.nextInt());
+					
+					if(choice){
+						print();
+						id = scanInt.nextInt();
+						if(id == 1)func.setDatePayment(1,30);
+						else if(id == 2)func.setDatePayment(30,30);
+						else if(id == 3)func.setDatePayment(1,7);
+						else if(id == 4)func.setDatePayment(15,30);
+					}else{
+						System.out.println("Informe a nova data para pagamento: (Dia)");
+						int dia = scanInt.nextInt();
+						System.out.println("Informe o intervalo entre os pagamentos: ");
+						func.setDatePayment(dia,scanInt.nextInt());
+					}
 					break;
 				}
 			}
@@ -242,10 +277,20 @@ public class Payroll {
 			for(Hourly func : hourlyList){
 				if(id == func.getID()){
 					flag = true;
-					System.out.println("Informe a nova data para pagamento: ");
-					int dia = scanInt.nextInt();
-					System.out.println("Informe o intervalo entre os pagamentos: ");
-					func.setDatePayment(dia,scanInt.nextInt());
+					
+					if(choice){
+						print();
+						id = scanInt.nextInt();
+						if(id == 1)func.setDatePayment(1,30);
+						else if(id == 2)func.setDatePayment(30,30);
+						else if(id == 3)func.setDatePayment(1,7);
+						else if(id == 4)func.setDatePayment(15,30);
+					}else{
+						System.out.println("Informe a nova data para pagamento: (Dia)");
+						int dia = scanInt.nextInt();
+						System.out.println("Informe o intervalo entre os pagamentos: ");
+						func.setDatePayment(dia,scanInt.nextInt());
+					}
 					break;
 				}
 			}
