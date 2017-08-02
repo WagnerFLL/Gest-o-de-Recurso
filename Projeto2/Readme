@@ -1,0 +1,12 @@
+Funcionalidades implementadas:
+1 Adição de um empregado.
+2 Remoção de um empregado.
+3 Lançar um Cartão de Ponto.  // O usuário precisa digitar o número de horas trabalhadas.
+4 Lançar um Resultado Venda.
+5 Lançar uma taxa de serviço.
+6 Alterar detalhes de um empregado.
+7 Rodar a folha de pagamento para hoje. // O sistema faz isso automaticamente, assim que o dia atual coincidir com 
+                                           o dia de pagamento de algum usuário. É possível ainda verificar a próxima
+                                           data de pagamento de todos os usuários de uma só vez.
+9 Agenda de Pagamento. // Permite que o usuário modifique a data de pagamento, e o intervalo entre as datas, de um funcionario.
+10 Criação de Novas Agendas de Pagamento. // O usuário pode alterar a data de pagamento para opções pré-definidas.
