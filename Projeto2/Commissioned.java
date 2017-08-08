@@ -16,6 +16,11 @@ public class Commissioned extends Salaried{
 		
 	}
 	
+	@Override
+	public double toPay() {
+		return super.toPay()+this.commission;
+	}
+
 	public void addSale(double sale) {
 		this.commission += percentageCommission*sale;
 	}

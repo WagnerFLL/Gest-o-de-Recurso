@@ -19,6 +19,11 @@ public class Salaried extends Functionary {
 
 	public void setFixedSalary(double fixedSalary) {
 		this.fixedSalary = fixedSalary;
+	}
+
+	@Override
+	public double toPay() {
+		return (this.fixedSalary/30)*getIntervalPayments();
 	}	
 
 }

@@ -3,7 +3,7 @@ package projeto2.folha.pagamento;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Functionary {
+public abstract class Functionary {
 	
 	Scanner scanInnt = new Scanner(System.in);
 	Scanner scanStr = new Scanner(System.in);
@@ -56,7 +56,9 @@ public class Functionary {
 	public void nextPayment() {
 		this.datePayment.add(datePayment.DAY_OF_MONTH, this.intervalPayments);
 	}
-
+	
+	public abstract double toPay();
+	
 	public int getCpf() {
 		return cpf;
 	}
