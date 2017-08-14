@@ -20,35 +20,49 @@ public abstract class Functionary {
 		this.ID = ID;
 		
 		this.intervalPayments = intervalPayments;
-		datePayment.add(datePayment.DAY_OF_MONTH, this.intervalPayments);
 		
-		System.out.println("Digite o nome do empregado: ");
-		this.name = scanStr.nextLine();
-		System.out.println("Digite seu CPF: (Int)");
-		this.cpf = scanInnt.nextInt();
-		System.out.println("Digite seu endereço: ");
-		this.adress = scanStr.nextLine();
+		datePayment.add(Calendar.DAY_OF_MONTH, this.intervalPayments);
 		
-		System.out.println("Qual a forma de pagamento?\n"
-				+ "1 - Cheque.\n"
-				+ "2 - Depósito bancário.\n"
-				+ "3 - Em mãos.\n");
-		int option = scanInnt.nextInt();
-		
-		switch(option) {
-		case 1:
+		try {
+			
+			System.out.println("Digite o nome do empregado: ");
+			this.name = scanStr.nextLine();
+			System.out.println("Digite seu CPF: (Int)");
+			this.cpf = scanInnt.nextInt();
+			System.out.println("Digite seu endereço: ");
+			this.adress = scanStr.nextLine();
+			
+			System.out.println("Qual a forma de pagamento?\n"
+					+ "1 - Cheque.\n"
+					+ "2 - Depósito bancário.\n"
+					+ "3 - Em mãos.\n");
+			int option = scanInnt.nextInt();
+			
+			switch(option) {
+			case 1:
+				this.formPayment = "Cheque";
+				break;
+			case 2:
+				this.formPayment = "Depósito bancário";
+				break;
+			case 3:
+				this.formPayment = "Em mãos.";
+				break;
+			default:
+				System.out.println("Opção inválida. Depósito bancário foi selecionado.");
+				this.formPayment = "Depósito bancário";
+				break;
+			}
+			
+		} catch( NumberFormatException e ) {
+			
+			e.printStackTrace();
 			this.formPayment = "Cheque";
-			break;
-		case 2:
-			this.formPayment = "Depósito bancário";
-			break;
-		case 3:
-			this.formPayment = "Em mãos.";
-			break;
-		default:
-			System.out.println("Opção inválida. Depósito bancário foi selecionado.");
-			this.formPayment = "Depósito bancário";
-			break;
+			
+		} catch( Exception e ) {
+			
+			e.printStackTrace();
+			
 		}
 	}
 	
