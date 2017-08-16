@@ -42,34 +42,34 @@ public class Payroll {
 			break;
 		
 		default:
-			System.out.println( "Opção inválida." );
+			System.out.println( "OpÃ§Ã£o invÃ¡lida." );
 			break;
 		}
 
 	}
 	
 	public void removeEmployee() {
-		System.out.println("Informe o ID do funcionário: ");
+		System.out.println("Informe o ID do funcionÃ¡rio: ");
 
 		boolean flag = false;
 		int id = scanInt.nextInt();
 		
 		for(Functionary func : functionaryList){
 			if(func.getID() == id){
-				System.out.println("Funcionário "+func.getName()+" removido.");
+				System.out.println("FuncionÃ¡rio "+func.getName()+" removido.");
 				functionaryList.remove(func);
 				flag = true;
 				break;
 			}
 		}
 		
-		if(!flag) System.out.println("Funconário inválido.");
+		if(!flag) System.out.println("FunconÃ¡rio invÃ¡lido.");
 		
 	}
 	
 	public void modifyEmployee() {
 
-		System.out.println("Informe o ID do funcionário: ");
+		System.out.println("Informe o ID do funcionÃ¡rio: ");
 		int id = scanInt.nextInt();
 		
 		Functionary funcionario = null;
@@ -84,7 +84,7 @@ public class Payroll {
 		System.out.println("O que deseja alterar?\n"
 				+ "1 - Nome.\n"
 				+ "2 - CPF.\n"
-				+ "3 - Endreço.\n");
+				+ "3 - EndreÃ§o.\n");
 		int option = scanInt.nextInt();
 
 		if( funcionario == null ) {
@@ -97,7 +97,7 @@ public class Payroll {
 			System.out.println( "Informe o CPF: " );
 			funcionario.setCpf( scanInt.nextInt() );
 		}else if( option == 3 ) {
-			System.out.println( "Informe o novo endereço:" );
+			System.out.println( "Informe o novo endereÃ§o:" );
 			funcionario.setAdress( scanStr.nextLine() );
 		}
 		
@@ -109,7 +109,7 @@ public class Payroll {
 			
 			if(calendar.get(Calendar.DAY_OF_MONTH) == func.getDatePayment().get(Calendar.DAY_OF_MONTH)){
 				
-				System.out.println( "Pagamento de " + func.toPay() + " feito à " + func.getName());
+				System.out.println( "Pagamento de " + func.toPay() + " feito Ã  " + func.getName());
 				func.nextPayment();
 				
 			}
@@ -119,20 +119,20 @@ public class Payroll {
 	
 	private void print(){
 		System.out.println("Escolha:\n"
-				+ "1 - 1º dia do mês.\n"
-				+ "2 - Último dia do mês.\n"
-				+ "3 - 1º dia da semana.\n"
-				+ "4 - No meio do mês.");
+				+ "1 - 1Âº dia do mÃªs.\n"
+				+ "2 - Ãšltimo dia do mÃªs.\n"
+				+ "3 - 1Âº dia da semana.\n"
+				+ "4 - No meio do mÃªs.");
 	}
 	
 	public void changePaymentsSchedule() {
 
-		System.out.println("Informe o ID do funcionário: ");
+		System.out.println("Informe o ID do funcionÃ¡rio: ");
 		int id = scanInt.nextInt();
 		boolean flag = false;
 		boolean choice = false;
 		
-		System.out.println("Deseja alterar para opções pré-definidas? (y/n)");
+		System.out.println("Deseja alterar para opÃ§Ãµes prÃ©-definidas? (y/n)");
 		if("y".equals(scanStr.nextLine())) choice = true;
 		
 		
@@ -171,7 +171,7 @@ public class Payroll {
 	
 	public void addHours() {
 		
-		System.out.println("Informe o id do funcionário: ");
+		System.out.println("Informe o id do funcionÃ¡rio: ");
 		int id = scanInt.nextInt();
 		boolean flag = false;
 		
@@ -182,21 +182,18 @@ public class Payroll {
 				func =  functionaryList.get(i);	
 				
 				if(id == func.getID()){
-					flag = true;
+					flag = true;			
 					
-					if(functionaryList.get(i) instanceof Hourly){
-						Hourly L = (Hourly) functionaryList.get(i);
-						System.out.println("Informe a quantidade de horas: (int)");
-						L.addHours(scanInt.nextInt());
+					Hourly L = (Hourly) functionaryList.get(i);
+					System.out.println("Informe a quantidade de horas: (int)");
+					L.addHours(scanInt.nextInt());
 					
-					}else{
-						System.out.println("O funcionário não é um horista.");
-					}
 					break;
 				}
 			}
 			
 		} catch ( ClassCastException e ) {
+			System.out.println("O funcionÃ¡rio nÃ£o Ã© um horista.");
 			e.printStackTrace();
 		}
 		
@@ -221,20 +218,17 @@ public class Payroll {
 				if(id == func.getID()){
 					flag = true;
 					
-					if( functionaryList.get( i ) instanceof Commissioned ){
-						Commissioned L = ( Commissioned ) functionaryList.get( i );
-						System.out.println( "Informe o valor da venda: " );
-						L.addSale( scanInt.nextDouble() );
+					Commissioned L = ( Commissioned ) functionaryList.get( i );
+					System.out.println( "Informe o valor da venda: " );
+					L.addSale( scanInt.nextDouble() );
 					
-					}else{
-						System.out.println( "O funcionário não é comissionado." );
-					}
 					break;
 				}
 		
 			}
 		
 		} catch( ClassCastException e ) {
+			System.out.println( "O funcionÃ¡rio nÃ£o Ã© comissionado." );
 			e.printStackTrace();
 		}
 		
@@ -244,7 +238,7 @@ public class Payroll {
 	
 	public void checkPayments() {
 		
-		System.out.println( "Funcionários:\n" );
+		System.out.println( "FuncionÃ¡rios:\n" );
 		
 		for(Functionary func : functionaryList){
 			System.out.println( func.getName() + " | Pagamento: " + func.getDatePayment().get( Calendar.DAY_OF_MONTH ) );
