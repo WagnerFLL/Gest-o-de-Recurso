@@ -1,4 +1,4 @@
-Padrões que serão implementados:
+Padrões que serão implementados inicialmente:
     - Prototype:
           Para a criação de novos alunos/professores/pesquisadores.
     - State: 
