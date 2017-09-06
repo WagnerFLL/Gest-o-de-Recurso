@@ -1,4 +1,4 @@
-package Persons;
+package Person;
 
 public class Professor extends PersonPrototype implements PrivateAcess {
 	

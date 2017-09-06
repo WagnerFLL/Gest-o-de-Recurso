@@ -1,4 +1,4 @@
-package Persons;
+package Person;
 
 public abstract class PersonPrototype {
 	

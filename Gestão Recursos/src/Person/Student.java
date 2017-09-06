@@ -1,4 +1,4 @@
-package Persons;
+package Person;
 
 public class Student extends PersonPrototype{
 	
@@ -14,6 +14,6 @@ public class Student extends PersonPrototype{
 	public PersonPrototype clonar() {
 		return new Student(this);
 	}
-	
-	
+
+
 }

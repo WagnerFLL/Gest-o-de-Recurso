@@ -1,7 +1,0 @@
-Padrões que serão implementados inicialmente:
-    - Prototype:
-          Para a criação de novos alunos/professores/pesquisadores.
-    - State: 
-          Quando houver mudanças no estado da alocação. Ex.: de "Em andamento" para "Alocado"
-    - Interpreter
-          Ao pesquisar recursos de acordo com o seu status de alocação.
