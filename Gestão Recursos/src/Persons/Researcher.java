@@ -1,6 +1,6 @@
-package Person;
+package Persons;
 
-public class Researcher extends PersonPrototype implements PrivateAcess {
+public class Researcher extends PrivateAcess{
 	
 	protected Researcher(Researcher researcher) {
 		this.setName(researcher.getName());

@@ -1,5 +1,9 @@
 package Activitys;
 
-public class Class extends Activity implements Restricted{
+import Persons.PrivateAcess;
+
+public class Class extends Activity {
+
+    public PrivateAcess responsible;
 
 }

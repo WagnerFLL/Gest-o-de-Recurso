@@ -1,4 +1,4 @@
-package Person;
+package Persons;
 
 public class Student extends PersonPrototype{
 	

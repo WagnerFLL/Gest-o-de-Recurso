@@ -10,16 +10,23 @@ public class Main {
 		Frame frame = new Frame();
 		
 		while(true) {
-			System.out.println("/tSelecione uma das opções:");
-			System.out.println("/t|1| Cadastrar novo usuário."
-							 + "");
+			System.out.println("\tSelecione uma das opções:\n");
+			System.out.println("\t|1| Cadastrar novo usuário.\n"
+							 + "\t|2| Alocar recurso.\n" +
+					  	 	   "\t|3| Alterar status da alocação.");
 			
 			int option = scan.nextInt();  
 			switch (option){
-			
-			case 1:
-				
-				break;
+				case 1:
+					frame.addUser();
+					break;
+				case 2:
+					frame.allocation();
+					break;
+				case 3:
+					frame.changeStatus();
+					break;
+
 			}
 			
 			
