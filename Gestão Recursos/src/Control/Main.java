@@ -11,9 +11,10 @@ public class Main {
 		
 		while(true) {
 			System.out.println("\tSelecione uma das opções:\n");
-			System.out.println("\t|1| Cadastrar novo usuário.\n"
-							 + "\t|2| Alocar recurso.\n" +
-					  	 	   "\t|3| Alterar status da alocação.");
+			System.out.println("\t|1| Cadastrar novo usuário.\n" +
+							   "\t|2| Alocar recurso.\n" +
+					  	 	   "\t|3| Alterar status da alocação.\n" +
+                               "\t|4| Adicionar informações de alocações.\n");
 			
 			int option = scan.nextInt();  
 			switch (option){
@@ -26,7 +27,9 @@ public class Main {
 				case 3:
 					frame.changeStatus();
 					break;
-
+                case 4:
+                    frame.addInfo();
+                    break;
 			}
 			
 			

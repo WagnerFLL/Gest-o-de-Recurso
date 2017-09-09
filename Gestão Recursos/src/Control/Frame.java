@@ -76,7 +76,7 @@ public class Frame {
 		System.out.println("Digite o número de laboratórios:");
 		int n_lab = scanInt.nextInt();
 		for(int i = 0 ; i < n_lab ; i++ )
-			this.laboratories.add( this.auditoriumPrototype.clonar( i ) );
+			this.laboratories.add( this.laboratoryPrototype.clonar( i ) );
 
 		System.out.println("Digite o número de prjetores:");
 		int n_projt = scanInt.nextInt();
@@ -97,27 +97,24 @@ public class Frame {
 		switch (option) {
 			case 1:
 				user = studentPrototype.clonar();
+				user.setAtributs(++countStd);
+				students.add((Student) user);
 				break;
 			case 2:
 				user = professorPrototype.clonar();
+				user.setAtributs(++countUser);
+				users.add((PrivateAcess) user);
 				break;
 			case 3:
-				user = reseacherPrototype.clonar();
-				break;
+                user = reseacherPrototype.clonar();
+                user.setAtributs(++countUser);
+                users.add((PrivateAcess) user);
+                break;
 			default:
 				user = studentPrototype.clonar();
+                user.setAtributs(++countStd);
+                students.add((Student) user);
 				break;
-		}
-
-		System.out.println("Digite o nome do usuário:");
-		user.setName(scanStr.nextLine());
-
-		if (user instanceof PrivateAcess){
-			user.setID(++countUser);
-			users.add((PrivateAcess) user);
-		}else{
-			user.setID(++countStd);
-			students.add((Student) user);
 		}
 		System.out.println("Usuário "+user.getName()+" adicionado! ID = "+user.getID());
 
@@ -244,5 +241,28 @@ public class Frame {
             System.out.println(">>> Ocorreu um erro, talvez essa alocação não exista.");
         }
     }
+    public void addInfo(){
+        try{
+            System.out.println("Informe o ID da alocação: ");
+            Activity activity = activities.get( scanInt.nextInt() );
+
+            System.out.println("Adicionar:\n" +
+                               "|1| Descrição.\n" +
+                               "|2| Material\n");
+            switch (scanInt.nextInt()){
+                case 1:
+                    System.out.println("> ");
+                    activity.setDescription( scanStr.nextLine() );
+                    break;
+                case 2:
+                    System.out.println("> ");
+                    activity.setMaterial( scanStr.nextLine() );
+                    break;
+            }
+        }catch (Exception e){
+            System.out.println(">>> Ocorreu um erro! Talvez a alocação não exista. <<<");
+        }
+    }
+
 }
 

@@ -11,5 +11,5 @@ public class Professor extends PrivateAcess {
 	public PersonPrototype clonar() {
 		return new Professor(this);
 	}
-	
+
 }

@@ -1,24 +1,11 @@
 package Persons;
 
-public abstract class PersonPrototype {
+import java.util.Scanner;
+
+public abstract class PersonPrototype extends PersonStrategy{
 	
 	public abstract PersonPrototype clonar();
-	
-	private String name;
-	private int ID;
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getID() {
-		return ID;
-	}
-	public void setID(int iD) {
-		ID = iD;
-	}
-	
+	public Scanner scanInt = new Scanner(System.in);
+	public Scanner scanStr = new Scanner(System.in);
 	
 }
