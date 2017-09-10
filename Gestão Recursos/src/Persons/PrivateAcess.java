@@ -2,7 +2,7 @@ package Persons;
 
 public abstract class PrivateAcess extends PersonPrototype {
 
-	private int numAllocations = 0;
+    private int numAllocations = 0;
 
     public int getNumAllocations() {
         return numAllocations;
